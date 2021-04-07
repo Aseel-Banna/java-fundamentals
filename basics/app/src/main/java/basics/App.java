@@ -41,24 +41,22 @@ public class App {
 
     public static void flipNHeads (int n){
         int headCount = 0;
-        int totalFlips = 0;
-        String flipType;
-
-        do{
+        int whileCounter = 0;
+        
+        while(headCount != n){
             double randomNumber = Math.random();
+            
             if (randomNumber < 0.5){
-                flipType = "tails";
-                totalFlips ++ ;
-                System.out.println(flipType);
+                System.out.println("tails");
+                headCount = 0;
             }else{
-                flipType = "heads";
-                totalFlips ++ ;
-                headCount ++ ;
-                System.out.println(flipType);
+                System.out.println("head");
+                headCount ++;
             }
-
-        }while(headCount < n);
-        System.out.println( "It took "+ totalFlips+" flips to flip "+ n + " heads in a row.");
+            whileCounter ++;
+        }
+        System.out.println("It took " + whileCounter + " flips to flip " + n + " heads in a row");
+        
     }
     public static   String clock(){
 
