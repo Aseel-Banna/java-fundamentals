@@ -3,12 +3,14 @@
  */
 package basiclibrary;
 
-import java.util.ArrayList;
+import java.util.*;
+import java.util.stream.Collectors;
 
 public class Library {
     public boolean someLibraryMethod() {
         return true;
     }
+
     public static int roll(int n){
         ArrayList<Integer> diceResults = new ArrayList<>();
         for (int i =0; i < n; i++){
@@ -66,4 +68,59 @@ public class Library {
 
     }
 
+    public static String tally(List<String> list){
+        HashMap<String, Integer> votes = new HashMap<>();
+        Integer highVoted = 0;
+        String winner = "";
+        for(String elector: list){
+            if(!votes.containsKey(elector)){
+                votes.put(elector, 1);
+            }else{
+                votes.put(elector, votes.get(elector) +1);
+            }
+        }
+
+        for(String name: votes.keySet()){
+            if(votes.get(name) > highVoted){
+                highVoted = votes.get(name);
+                winner = name + " received the most votes!";
+            }
+        }
+        return winner;
+    }
+
+    public static String minAndMaxTemperature(int[][] weatherArray){
+        String result = "";
+        int neverShownTemperature = 0;
+        int max = 0;
+        int min = 100;
+
+        Set<Integer> maxAverages= new HashSet<>();
+
+        for (int i = 0; i < weatherArray.length; i++){
+            for (int j=0; j<weatherArray[i].length; j++){
+                maxAverages.add(weatherArray[i][j]);
+            }
+        }
+
+        for(Integer item1: maxAverages){
+            if(max<item1){
+                max=item1;
+            }
+
+            if(min>item1){
+                min=item1;
+            }
+        }
+        result+= "High: "+max+"\n";
+        result+= "Low: "+min+"\n";
+
+        for(int i = min; i<max ; i++){
+            if (!maxAverages.contains(i)) {
+                result+="Never saw temperature: "+ i+"\n";
+            }
+        }
+
+        return result;
+    }
 }
