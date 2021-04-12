@@ -4,54 +4,92 @@
 package inheritance;
 
 import org.junit.Test;
+
+import java.util.ArrayList;
+
 import static org.junit.Assert.*;
 
 public class LibraryTest {
-    @Test public void testSomeLibraryMethod() {
-        Library classUnderTest = new Library();
-        assertTrue("someLibraryMethod should return 'true'", classUnderTest.someLibraryMethod());
-    }
-
     @Test public void testRestaurantClass() {
-        Restaurant restaurant = new Restaurant("Elul", 5.0,"$");
+        Restaurant restaurant = new Restaurant("Elul", 5.0,"JD");
         System.out.println(restaurant.toString());
-        assertEquals("Restaurant Name: Elul\nVotes: 5.0\nCurrency: $" ,restaurant.toString());
+        restaurant.addReview("Aseel Albanna", 4.5 , "Great!");
+        assertEquals("Restaurant Name: Elul\nVotes: 9.5\nCurrency: JD\n[Review Name: Aseel Albanna\n" +
+                "Rating: 4.5\n" +
+                "Message: Great!.]" ,restaurant.toString());
     }
 
     @Test public void testReviewClass() {
         String restName = "Elul";
         double restVotes = 5.0;
-        String restCurrency = "$";
-        Restaurant restaurant = new Restaurant(restName,restVotes, restCurrency);
         Review classUnderTest = new Review("Aseel Albanna", 5.0, "Wow!", restName, restVotes);
-
-        assertEquals("Name: Aseel Albanna\nMessage: I voted for Elul restaurant, and give it 5.0, So it has now 5.0 stars. Wow!",
-                classUnderTest.toString());
-    }
-
-    @Test public void testAddReviewMethod(){
-        String restName = "Elul";
-        double restVotes = 5.0;
-        String restCurrency = "$";
-        Restaurant restaurant = new Restaurant(restName,restVotes, restCurrency);
-        Review classUnderTest = new Review("Aseel Albanna", 5.0, "Wow!", restName, restVotes);
-
+        assertEquals("Review Name: Aseel Albanna\nRating: 5.0\nMessage: Wow!.",classUnderTest.toString());
     }
 
     @Test public void ReviewTestToString () {
+        Restaurant restaurant = new Restaurant("Elul", 5.0, "JD");
+        restaurant.addReview("Aseel Albanna", 4.5 , "Great!");
 
-        Review review = new Review("Aseel Albanna", 5.0, "Great Restaurant", "Elul", 5.0);
-        assertEquals("Name: " + review.getAuthor() +
-                "\nMessage: I voted for "+ review.getRestaurantName() + " restaurant, and give it " + review.getVotesGiven() + ", So it has now "+ review.getVotes() + " stars. Wow!" ,review.toString());
+
+        String expected = "Restaurant Name: Elul\n" +
+                "Votes: 9.5\n" +
+                "Currency: JD\n[Review Name: Aseel Albanna\n" +
+                "Rating: 4.5\n" +
+                "Message: Great!.]";
+        System.out.println(restaurant.toString());
+        assertEquals(expected, restaurant.toString());
     }
 
     @Test public void testAddReview(){
         Review review = new Review("Aseel Albanna", 5.0, "Great Restaurant!", "Elul", 5.0);
         Restaurant restaurant = new Restaurant("Elul", 5.0,"$");
-        restaurant.addReview(review);
+        restaurant.addReview("review", 5, "Hi");
         System.out.println(review.toString());
-        assertEquals("Name: Aseel Albanna\nMessage: I voted for Elul restaurant, and give it 5.0, So it has now 10.0 stars. Wow!",review.toString());
+        assertEquals("Review Name: Aseel Albanna\n" +
+                "Rating: 5.0\n" +
+                "Message: Great Restaurant!.",review.toString());
     }
 
+    @Test public void testShopToString() {
+
+        Shop shop = new Shop("Max", "It is a clothing shop.", "$$");
+        System.out.println(shop.toString());
+        assertEquals("Shop Name: Max\nDescription: It is a clothing shop.\nCurrency: $$",shop.toString());
+    }
+
+    @Test public void testTheater() {
+        ArrayList<String> list = new ArrayList<>();
+        list.add("Titanic");
+        list.add("The Lion King");
+        Theater theater = new Theater("Prime Cinema",list);
+        assertEquals("[Titanic, The Lion King]",theater.toString());
+
+        theater.addMovie("Home alone");
+        assertEquals("[Titanic, The Lion King, Home alone]",theater.toString());
+
+        theater.removeMovie("Titanic");
+        assertEquals("[The Lion King, Home alone]",theater.toString());
+
+
+
+
+
+    }
+
+    @Test public void testTheaterReview(){
+        ArrayList<String> list = new ArrayList<>();
+        list.add("Titanic");
+        list.add("The Lion King");
+        Theater theater = new Theater("Prime Cinema",list);
+        assertEquals("The movie has been added!", theater.addReview("Aseel Nihad",5.0 ,"Home alone", "Comedy Movie!"));
+
+        assertEquals("The Titanic movie has rate Review: Name: Aseel Nihad\n" +
+                "Rate: 4.5\n" +
+                "Movie Name: Titanic.", theater.addReview("Aseel Nihad",4.5,"Titanic", "Great!"));
+        assertEquals("The The Lion King movie has rate Review: Name: Aseel Albanna\n" +
+                "Rate: 4.9\n" +
+                "Movie Name: The Lion King.", theater.addReview("Aseel Albanna",4.9,"The Lion King", "Great!!"));
+
+    }
 
 }

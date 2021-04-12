@@ -1,14 +1,16 @@
 package inheritance;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class Restaurant {
+
     String restaurantName;
     double votes;
     String currency;
 
-    Review review;
-
+    public List<Review> reviews;
 
     public Restaurant(){}
 
@@ -45,24 +47,21 @@ public class Restaurant {
         }
         this.votes = votes;
         this.currency= currency;
+        this.reviews = new ArrayList<>();
     }
 
     public String toString(){
         String information = new String();
         information += "Restaurant Name: " + restaurantName + "\nVotes: " + votes +
-                "\nCurrency: " + currency;
+                "\nCurrency: " + currency + "\n" + reviews;
+        System.out.println(information);
         return information;
     }
 
-    public void addReview(Review review){
-        double totalVotes = this.getVotes() + review.votesGiven;
-        review.setCurrency(this.getCurrency());
-        review.setVotes(totalVotes);
-        review.setRestaurantName(this.getRestaurantName());
-        review.setAuthor(review.getAuthor());
-        review.setBody(review.getBody());
-        review.setVotesGiven(review.getVotesGiven());
-        this.review = review;
+    public void addReview(String newReview, double newVotes, String message){
+          Review review = new Review( newReview, newVotes, message);
+          this.votes = this.votes + newVotes;
+          this.reviews.add(review);
     }
 
  }
