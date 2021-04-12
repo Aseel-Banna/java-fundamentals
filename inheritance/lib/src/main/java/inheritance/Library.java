@@ -3,8 +3,32 @@
  */
 package inheritance;
 
+import java.util.ArrayList;
+
 public class Library {
-    public boolean someLibraryMethod() {
-        return true;
+    public static  void main(String[] args){
+//        Restaurant restaurant = new Restaurant("Elul", 5.0, "JD");
+//        restaurant.addReview("Aseel Albanna", 4.5 , "Great!");
+//        restaurant.toString();
+//
+//        Shop shop = new Shop("Carefour","Food Market","$$");
+//        shop.addReview("Aseel Albanna",5.0, "Grate Market!");
+//        shop.toString();
+
+        ArrayList<String> list = new ArrayList<>();
+        list.add("Titanic");
+        list.add("The Lion King");
+        Theater theater = new Theater("Prime Cinema",list);
+//        theater.toString();
+//        theater.addMovie("Home alone");
+//        theater.toString();
+//        theater.removeMovie("Titanic");
+//        theater.toString();
+//
+//        theater.addReview("Aseel Nihad",5.0 ,"Home alone", "Comedy Movie!");
+//        theater.addReview("Aseel Nihad",4.5,"Titanic", "Great!");
+        theater.addReview("Aseel Albanna",4.9,"The Lion King", "Great!!");
+
+
     }
 }
