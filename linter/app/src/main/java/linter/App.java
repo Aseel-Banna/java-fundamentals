@@ -14,10 +14,10 @@ public class App {
         String dir = System.getProperty("user.dir");
         if(dir.charAt(dir.length()-1) == 'p'){
             System.out.println("Running using Gradle/Test");
-            int many = javaScriptLinter("C:\\Users\\Aseel N Albanna\\java-fundamentals\\linter\\app\\gates.js");
+            int many = javaScriptLinter("./app/src/main/resources/gates.js");
         }else{
             System.out.println("Running using IntelliJ");
-            int many = javaScriptLinter("C:\\Users\\Aseel N Albanna\\java-fundamentals\\linter\\app\\gates.js");
+            int many = javaScriptLinter("./app/src/main/resources/gates.js");
         }
     }
     public static int javaScriptLinter(String fileName){

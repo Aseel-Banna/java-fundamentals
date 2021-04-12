@@ -21,7 +21,7 @@ public class LibraryTest {
         int []arr={1,2,1};
         assertTrue("the array has duplicate elements 'true'",containsDuplicatesTest.containsDuplicates(arr));
 
-    }//end testcontainsDuplicates()
+    }
 
     @Test
     public void testAvg(){
