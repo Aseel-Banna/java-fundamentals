@@ -12,6 +12,7 @@ Lab 3 | Maps and File I/O | [Link 3](https://github.com/Aseel-Banna/java-fundame
 Lab 4 | Bitmap Transformer | [Link 4](https://github.com/Aseel-Banna/bitmap-transformer)
 Lab 5 | Linked List | [Link 5](https://github.com/Aseel-Banna/data-structures-and-algorithms/tree/main/data-structure)
 Lab 6 | Inheritance and Interfaces | [Link 6](https://github.com/Aseel-Banna/java-fundamentals/tree/inheritance)
+Lab 7 | Inheritance, day 2 | [Link 7](https://github.com/Aseel-Banna/java-fundamentals/tree/inheritance)
 
 
 
